@@ -1,3 +1,6 @@
+backend run - mvn spring-boot:run
+frontend run - npm run dev
+
 # E-Commerce Full-Stack Application
 
 A complete e-commerce application built with Spring Boot (Backend) and React (Frontend) featuring product management, shopping cart functionality, and image handling.

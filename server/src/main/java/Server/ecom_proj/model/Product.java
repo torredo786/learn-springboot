@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -23,11 +25,19 @@ public class Product {
     private BigDecimal price;
     private String category;
 
+    @Column(name = "release_date")
     private Date releaseDate;
+
+    @Column(name = "product_available")
     private boolean productAvailable;
+
+    @Column(name = "stock_quantity")
     private int stockQuantity;
 
+    @Column(name = "image_name")
     private String imageName;
+
+    @Column(name = "image_type")
     private String imageType;
     @Lob
     private byte[] imageDate;

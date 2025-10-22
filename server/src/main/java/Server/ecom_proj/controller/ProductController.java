@@ -54,10 +54,20 @@ public class ProductController {
     public ResponseEntity<byte[]> getImageByProductId(@PathVariable int productId){
 
         Product product = service.getProductById(productId);
+        if(product == null || product.getImageDate() == null) {
+            return ResponseEntity.notFound().build();
+        }
+        
         byte[] imageFile = product.getImageDate();
+        String imageType = product.getImageType();
+        
+        // Handle null or empty image type
+        if(imageType == null || imageType.trim().isEmpty()) {
+            imageType = "application/octet-stream"; // Default binary type
+        }
 
         return ResponseEntity.ok()
-                .contentType(MediaType.valueOf(product.getImageType()))
+                .contentType(MediaType.valueOf(imageType))
                 .body(imageFile);
 
     }
